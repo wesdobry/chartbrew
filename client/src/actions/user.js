@@ -15,6 +15,9 @@ export const REMOVE_PENDING_INVITE = "REMOVE_PENDING_INVITE";
 
 const expires = moment().add(1, "month").toDate();
 
+console.log("wes-test");
+
+
 function authenticatePage() {
   if (window.location.pathname === "/login") {
     return false;
