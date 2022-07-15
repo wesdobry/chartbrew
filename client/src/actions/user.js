@@ -15,9 +15,6 @@ export const REMOVE_PENDING_INVITE = "REMOVE_PENDING_INVITE";
 
 const expires = moment().add(1, "month").toDate();
 
-console.log("wes-test");
-
-
 function authenticatePage() {
   if (window.location.pathname === "/login") {
     return false;
@@ -83,6 +80,8 @@ export function createUser(data) {
       .then((response) => {
         if (!response.ok) {
           dispatch(addError(response.status));
+          console.log("wes - " + response.status);
+          console.log("wes - " + response.statusText);
           return new Promise((resolve, reject) => reject(response.statusText));
         }
         return response.json();
