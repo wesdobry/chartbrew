@@ -1,10 +1,21 @@
-FROM node:14-slim
+FROM ubuntu:latest
 
 WORKDIR /code
 COPY . .
 
-RUN cd client && npm install && cd ../server && npm install
-RUN npm run prepareSettings
+RUN  apt-get update \
+ && apt-get install -y wget \
+ && rm -rf /var/lib/apt/lists/* \
+ && cd /tmp \
+ && wget https://deb.nodesource.com/setup_16.x \
+ && chmod +x setup_16.x \
+ && ./setup_16.x \
+ && apt-get install nodejs \
+ && cd /code/client \
+ && npm install \
+ && cd ../server \
+ && npm install \
+ && npm run prepareSettings
 
 EXPOSE 3000
 EXPOSE 3210
