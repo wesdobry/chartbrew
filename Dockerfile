@@ -14,8 +14,9 @@ RUN  apt-get update \
  && cd /code/client \
  && npm install \
  && cd ../server \
- && npm install \
- && npm run prepareSettings
+ && npm install
+
+RUN npm run prepareSettings
 
 EXPOSE 3000
 EXPOSE 3210
